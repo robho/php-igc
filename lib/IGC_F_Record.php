@@ -42,11 +42,11 @@ class IGC_F_Record extends IGC_Record
   public function __construct($record)
   {
     $this->type = 'F';
-    $this->raw = $string;
+    $this->raw = $record;
 
-    $this->time_array['h'] = substr($record,1,2);
-    $this->time_array['m'] = substr($record,3,2);
-    $this->time_array['s'] = substr($record,5,2);
+    $this->time_array['h'] = substr($record, 1, 2);
+    $this->time_array['m'] = substr($record, 3, 2);
+    $this->time_array['s'] = substr($record, 5, 2);
 
   }
 }
