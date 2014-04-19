@@ -12,28 +12,20 @@
 class IGC_I_Record extends IGC_Record
 {
   /**
-   * Start byte number
+   * Numbers of extensions in B records
    *
    * @access public
    * @var integer
    */
-  public $start_byte_number;
+  public $number_of_extensions;
 
   /**
-   * Finish byte number
+   * Extensions and the positions of the extensions in the B records
    *
    * @access public
-   * @var integer
+   * @var array
    */
-  public $finish_byte_number;
-
-  /**
-   * Mnemonic
-   *
-   * @access public
-   * @var string
-   */
-  public $mnemonic;
+  public $extensions;
 
   /**
    * Class constructor creates the I record from the raw IGC string
@@ -45,9 +37,13 @@ class IGC_I_Record extends IGC_Record
     $this->type = 'I';
     $this->raw = $record;
 
-    $this->start_byte_number = substr($record,1,2);
-    $this->finish_byte_number = substr($record,3,2);
-    $this->mnemonic = substr($record,5,3);
+    $this->number_of_extensions = intval(substr($record, 1, 2));
+    for ($i = 0; $i < $this->number_of_extensions; $i++) {
+      $extension_code = substr($record, 1 + 2 + $i * 7 + 4, 3);
+      $this->extensions[$extension_code] =
+        array("start_byte" => intval(substr($record, 1 + 2 + $i * 7, 2)),
+              "finish_byte" => intval(substr($record, 1 + 2 + $i * 7 + 2, 2)));
+    }
   }
 }
 ?>
