@@ -64,14 +64,9 @@ class PHP_IGC
    * Class constructor creates the PHP_IGC object from a file path.
    *
    * @param        string  $file_path usually this will be the request vars
-   * @return       bool    Returns false if file doesn't exist.
    */
   public function __construct($file_path)
   {
-    if (!file_exists($file_path)) {
-      return false;
-    }
-
     spl_autoload_register('self::ClassAutoloader');
     $handle = @fopen($file_path, "r");
     if ($handle) {
@@ -80,8 +75,6 @@ class PHP_IGC
       }
     }
     spl_autoload_unregister('self::ClassAutoloader');
-
-    return true;
   }
 
   /**
