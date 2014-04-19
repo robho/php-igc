@@ -66,12 +66,14 @@ class PHP_IGC
 			return false;
 		}
 		
+                spl_autoload_register('self::ClassAutoloader');
 		$handle = @fopen($file_path, "r");
 		if ($handle) {
 			while (!feof($handle)) {
 				$this->records[] = $this->getRecord(fgets($handle, 4096));
 			}
 		}
+                spl_autoload_unregister('self::ClassAutoloader');
 		
 		return true;
 	}
@@ -85,11 +87,7 @@ class PHP_IGC
 	public function getRecord($string) {
 		
 		$classname = 'IGC_'.strtoupper(substr($string,0,1)).'_Record';
-		if (class_exists($classname)) {
-			return new $classname($string);
-		} else {
-			return false;
-		}
+                return new $classname($string);
 	}
 	
 	/**
@@ -212,5 +210,11 @@ function loadIGC() {
 		
 		return $man[(string)$code];
 	}
+
+        private static function ClassAutoloader($class_name)
+	{
+          require(dirname(__FILE__).DIRECTORY_SEPARATOR.
+                  "lib".DIRECTORY_SEPARATOR.$class_name.".php");
+        }
 }
 ?>
