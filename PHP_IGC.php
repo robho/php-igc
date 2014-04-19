@@ -112,7 +112,7 @@ class PHP_IGC
 		}
 		
 		// reset to 0 if a minimum altitude was never recorded
-		if ($this->min_altitude = 80000) {
+		if ($this->min_altitude == 80000) {
 			$this->min_altitude = 0;
 		}
 	}
