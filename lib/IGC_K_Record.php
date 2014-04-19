@@ -31,7 +31,7 @@ class IGC_K_Record extends IGC_Record
    *
    * $param     string  $record
    */
-  public function __consruct($record)
+  public function __construct($record)
   {
     $this->type = 'F';
     $this->raw = $record;
