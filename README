@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Instructions: Use the PHP_IGC.php file inside the release/ directory for your
 project.  Instanciate the PHP_IGC class with the path to the IGC file.
 
-Example: 
+Example:
 
 <?php
 
