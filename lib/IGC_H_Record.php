@@ -52,13 +52,19 @@ class IGC_H_Record extends IGC_Record
     $this->type = 'H';
     $this->raw = $record;
 
-    $this->source = substr($record,1,1);
-    $this->mnemonic = substr($record,2,3);
+    $this->source = substr($record, 1, 1);
+    $this->mnemonic = substr($record, 2, 3);
 
-    // explode the rest of the string on the colon
-    $array = explode(":",substr($record,4));
-    $this->key = $array[0];
-    $this->value = $array[1];
+    if ($this->mnemonic == "DTE" || $this->mnemonic == "FXA") {
+      $this->key = substr($record, 0, 5);
+      $this->value = substr($record, 5);
+    }
+    else {
+      // explode the rest of the string on the colon
+      $array = explode(":", substr($record, 4));
+      $this->key = $array[0];
+      $this->value = $array[1];
+    }
   }
 }
 ?>
