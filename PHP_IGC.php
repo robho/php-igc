@@ -69,9 +69,9 @@ class PHP_IGC
                 spl_autoload_register('self::ClassAutoloader');
 		$handle = @fopen($file_path, "r");
 		if ($handle) {
-			while (!feof($handle)) {
-				$this->records[] = $this->getRecord(fgets($handle, 4096));
-			}
+                  while (($buffer = fgets($handle)) !== FALSE) {
+                    $this->records[] = $this->getRecord($buffer);
+                  }
 		}
                 spl_autoload_unregister('self::ClassAutoloader');
 		
