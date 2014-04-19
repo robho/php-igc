@@ -18,19 +18,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
-Instructions: Use the PHP_IGC.php file inside the release/ directory for your
-project.  Instanciate the PHP_IGC class with the path to the IGC file.
+Instructions: Include PHP_IGC.php and instantiate the PHP_IGC class
+	      with the path to an IGC file.
 
 Example:
 
 <?php
 
-if ($igc != new PHP_IGC('/path/to/my_igc_file.igc')) {
-	die("error reading igc file");
-}
-
+$igc = new PHP_IGC('/path/to/my_igc_file.igc');
 $igc->setDetails();
-
 
 $google_maps_code = $igc->getMap('ABCDEFG', 640, 480);
 ?>
