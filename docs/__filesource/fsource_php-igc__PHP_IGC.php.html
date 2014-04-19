@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for PHP_IGC.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file PHP_IGC.php</h1>
+<p>Documentation is available at <a href="../php-igc/_PHP_IGC_php.html">PHP_IGC.php</a></p>
+<div class="src-code">
+<pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc">* PHP_IGC</span></li>
+<li><a name="a4"></a><span class="src-doc">*</span></li>
+<li><a name="a5"></a><span class="src-doc">* This class is instanciated with the file path of the IGC file. It</span></li>
+<li><a name="a6"></a><span class="src-doc">* will create an array of IGC record objects for convenient use of the data.</span></li>
+<li><a name="a7"></a><span class="src-doc">*</span></li>
+<li><a name="a8"></a><span class="src-doc">* </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 0.1</span></li>
+<li><a name="a9"></a><span class="src-doc">* </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Mike Milano &lt;coder1@gmail.com&gt;</span></li>
+<li><a name="a10"></a><span class="src-doc">* </span><span class="src-doc-tag">@project</span><span class="src-doc"> php-igc</span></li>
+<li><a name="a11"></a><span class="src-doc">*/</span></li>
+<li><a name="a12"></a><span class="src-key">class </span><a href="../php-igc/PHP_IGC.html">PHP_IGC</a></li>
+<li><a name="a13"></a><span class="src-sym">{</span></li>
+<li><a name="a14"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a15"></a><span class="src-doc">    * The date and time of the flight</span></li>
+<li><a name="a16"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a17"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a18"></a><span class="src-doc">    */</span></li>
+<li><a name="a19"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$datetime">$datetime</a><span class="src-sym">;</span></li>
+<li><a name="a20"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a21"></a><span class="src-doc">    * The Pilot's name</span></li>
+<li><a name="a22"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a23"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a24"></a><span class="src-doc">    */</span></li>
+<li><a name="a25"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$pilot">$pilot</a><span class="src-sym">;</span></li>
+<li><a name="a26"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a27"></a><span class="src-doc">    * The Glider type</span></li>
+<li><a name="a28"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a29"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a30"></a><span class="src-doc">    */</span></li>
+<li><a name="a31"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$glider_type">$glider_type</a><span class="src-sym">;</span></li>
+<li><a name="a32"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a33"></a><span class="src-doc">    * The Glider ID</span></li>
+<li><a name="a34"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a35"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a36"></a><span class="src-doc">    */</span></li>
+<li><a name="a37"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$glider_id">$glider_id</a><span class="src-sym">;</span></li>
+<li><a name="a38"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a39"></a><span class="src-doc">    * The max altitude of the flight</span></li>
+<li><a name="a40"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a41"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a42"></a><span class="src-doc">    */</span></li>
+<li><a name="a43"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$max_altitude">$max_altitude</a><span class="src-sym">;</span></li>
+<li><a name="a44"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a45"></a><span class="src-doc">    * The minimum altitude of the flight</span></li>
+<li><a name="a46"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a47"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a48"></a><span class="src-doc">    */</span></li>
+<li><a name="a49"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$min_altitude">$min_altitude</a><span class="src-sym">;</span></li>
+<li><a name="a50"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a51"></a><span class="src-doc">    * The total distance of the flight</span></li>
+<li><a name="a52"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a53"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a54"></a><span class="src-doc">    */</span></li>
+<li><a name="a55"></a>    <span class="src-key">public </span><a href="../php-igc/PHP_IGC.html#var$distance">$distance</a><span class="src-sym">;</span></li>
+<li><a name="a56"></a>    </li>
+<li><a name="a57"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a58"></a><span class="src-doc">    * Class constructor creates the PHP_IGC object from a file path.</span></li>
+<li><a name="a59"></a><span class="src-doc">    *</span></li>
+<li><a name="a60"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">    </span><span class="src-doc-type">string </span><span class="src-doc">    </span><span class="src-doc-var">$file_path </span><span class="src-doc">usually this will be the request vars</span></li>
+<li><a name="a61"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@return </span><span class="src-doc">   </span><span class="src-doc-type">bool </span><span class="src-doc">    Returns false if file doesn't exist.</span></li>
+<li><a name="a62"></a><span class="src-doc">    */ </span></li>
+<li><a name="a63"></a>    <span class="src-key">public </span><span class="src-key">function </span><a href="../php-igc/PHP_IGC.html#method__construct">__construct</a><span class="src-sym">(</span><span class="src-var">$file_path</span><span class="src-sym">)</span></li>
+<li><a name="a64"></a>    <span class="src-sym">{</span></li>
+<li><a name="a65"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/file_exists">file_exists</a><span class="src-sym">(</span><span class="src-var">$file_path</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a66"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a67"></a>        <span class="src-sym">}</span></li>
+<li><a name="a68"></a>        </li>
+<li><a name="a69"></a>        <span class="src-var">$handle </span>= <span class="src-sym">@</span><a href="http://www.php.net/fopen">fopen</a><span class="src-sym">(</span><span class="src-var">$file_path</span><span class="src-sym">, </span><span class="src-str">&quot;r&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a70"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$handle</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a71"></a>            <span class="src-key">while </span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/feof">feof</a><span class="src-sym">(</span><span class="src-var">$handle</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a72"></a>                <span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">records</span><span class="src-sym">[</span><span class="src-sym">] </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#methodgetRecord">getRecord</a><span class="src-sym">(</span><a href="http://www.php.net/fgets">fgets</a><span class="src-sym">(</span><span class="src-var">$handle</span><span class="src-sym">, </span><span class="src-num">4096</span><span class="src-sym">))</span><span class="src-sym">;</span></li>
+<li><a name="a73"></a>            <span class="src-sym">}</span></li>
+<li><a name="a74"></a>        <span class="src-sym">}</span></li>
+<li><a name="a75"></a>        </li>
+<li><a name="a76"></a>        <span class="src-key">return </span><span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a77"></a>    <span class="src-sym">}</span></li>
+<li><a name="a78"></a>    </li>
+<li><a name="a79"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a80"></a><span class="src-doc">    * Returns an IGC record object</span></li>
+<li><a name="a81"></a><span class="src-doc">    *</span></li>
+<li><a name="a82"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">    </span><span class="src-doc-type">string </span><span class="src-doc">        </span><span class="src-doc-var">$string </span><span class="src-doc">is the raw record line from an IGC file</span></li>
+<li><a name="a83"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@return </span><span class="src-doc">   </span><span class="src-doc-type">IGC_Record </span><span class="src-doc">    Returns the specific IGC_Record object or false if the record isn't supported.</span></li>
+<li><a name="a84"></a><span class="src-doc">    */ </span></li>
+<li><a name="a85"></a>    <span class="src-key">public </span><span class="src-key">function </span><a href="../php-igc/PHP_IGC.html#methodgetRecord">getRecord</a><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a86"></a>        </li>
+<li><a name="a87"></a>        <span class="src-var">$classname </span>= <span class="src-str">'IGC_'</span>.<a href="http://www.php.net/strtoupper">strtoupper</a><span class="src-sym">(</span><a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">,</span><span class="src-num">0</span><span class="src-sym">,</span><span class="src-num">1</span><span class="src-sym">))</span>.<span class="src-str">'_Record'</span><span class="src-sym">;</span></li>
+<li><a name="a88"></a>        <span class="src-key">if </span><span class="src-sym">(</span><a href="http://www.php.net/class_exists">class_exists</a><span class="src-sym">(</span><span class="src-var">$classname</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a89"></a>            <span class="src-key">return </span><span class="src-key">new </span><span class="src-var">$classname</span><span class="src-sym">(</span><span class="src-var">$string</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a90"></a>        <span class="src-sym">} </span><span class="src-key">else </span><span class="src-sym">{</span></li>
+<li><a name="a91"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a92"></a>        <span class="src-sym">}</span></li>
+<li><a name="a93"></a>    <span class="src-sym">}</span></li>
+<li><a name="a94"></a>    </li>
+<li><a name="a95"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a96"></a><span class="src-doc">    * Sets the details of the IGC files from the record objects within</span></li>
+<li><a name="a97"></a><span class="src-doc">    */ </span></li>
+<li><a name="a98"></a>    <span class="src-key">public </span><span class="src-key">function </span><a href="../php-igc/PHP_IGC.html#methodsetDetails">setDetails</a><span class="src-sym">(</span><span class="src-sym">)</span></li>
+<li><a name="a99"></a>    <span class="src-sym">{</span></li>
+<li><a name="a100"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$max_altitude">max_altitude</a> = <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a101"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$min_altitude">min_altitude</a> = <span class="src-num">80000</span><span class="src-sym">;</span></li>
+<li><a name="a102"></a>        </li>
+<li><a name="a103"></a>        <span class="src-comm">// set lowest and highest altitude</span></li>
+<li><a name="a104"></a>        <span class="src-key">if </span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">records</span><span class="src-sym">)) </span><span class="src-sym">{</span></li>
+<li><a name="a105"></a>            <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">records </span><span class="src-key">as </span><span class="src-var">$each</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a106"></a>                <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$each</span><span class="src-sym">[</span><span class="src-str">'type'</span><span class="src-sym">] </span>== <span class="src-str">'B'</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a107"></a>                    <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$each</span><span class="src-sym">[</span><span class="src-str">'pressure_altitude'</span><span class="src-sym">]</span>&gt;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$max_altitude">max_altitude</a><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a108"></a>                        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$max_altitude">max_altitude</a> = <span class="src-var">$each</span><span class="src-sym">[</span><span class="src-str">'pressure_altitude'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a109"></a>                    <span class="src-sym">} </span><span class="src-key">elseif </span><span class="src-sym">(</span><span class="src-var">$each</span><span class="src-sym">[</span><span class="src-str">'pressure_altitude'</span><span class="src-sym">] </span>&lt; <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$min_altitude">min_altitude</a><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a110"></a>                        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$min_altitude">min_altitude</a> = <span class="src-var">$each</span><span class="src-sym">[</span><span class="src-str">'pressure_altitude'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a111"></a>                    <span class="src-sym">}</span></li>
+<li><a name="a112"></a>                <span class="src-sym">}</span></li>
+<li><a name="a113"></a>            <span class="src-sym">}</span></li>
+<li><a name="a114"></a>        <span class="src-sym">}</span></li>
+<li><a name="a115"></a>        </li>
+<li><a name="a116"></a>        <span class="src-comm">// reset to 0 if a minimum altitude was never recorded</span></li>
+<li><a name="a117"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$min_altitude">min_altitude</a> = <span class="src-num">80000</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a118"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/PHP_IGC.html#var$min_altitude">min_altitude</a> = <span class="src-num">0</span><span class="src-sym">;</span></li>
+<li><a name="a119"></a>        <span class="src-sym">}</span></li>
+<li><a name="a120"></a>    <span class="src-sym">}</span></li>
+<li><a name="a121"></a>        </li>
+<li><a name="a122"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a123"></a><span class="src-doc">    * Returns the HTML and Javascript to draw the path over GoogleMaps</span></li>
+<li><a name="a124"></a><span class="src-doc">    *</span></li>
+<li><a name="a125"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">    </span><span class="src-doc-type">string </span><span class="src-doc">   </span><span class="src-doc-var">$key </span><span class="src-doc">is the GoogleAPI developer key</span></li>
+<li><a name="a126"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">   </span><span class="src-doc-type">integer </span><span class="src-doc">   </span><span class="src-doc-var">$width </span><span class="src-doc">in pixels</span></li>
+<li><a name="a127"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">   </span><span class="src-doc-type">integer </span><span class="src-doc">   </span><span class="src-doc-var">$height </span><span class="src-doc">in pixels</span></li>
+<li><a name="a128"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@return </span><span class="src-doc">   </span><span class="src-doc-type">string </span><span class="src-doc">    Returns HTML, CSS, and JavaScript</span></li>
+<li><a name="a129"></a><span class="src-doc">    */ </span></li>
+<li><a name="a130"></a>    <span class="src-key">public </span><span class="src-key">function </span><a href="../php-igc/PHP_IGC.html#methodgetMap">getMap</a><span class="src-sym">(</span><span class="src-var">$key</span><span class="src-sym">, </span><span class="src-var">$width</span><span class="src-sym">, </span><span class="src-var">$height</span><span class="src-sym">)</span></li>
+<li><a name="a131"></a>    <span class="src-sym">{</span></li>
+<li><a name="a132"></a>        <span class="src-key">if </span><span class="src-sym">(</span><a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">records</span><span class="src-sym">)</span>&lt;<span class="src-num">1</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a133"></a>            <span class="src-var">$code </span>= <span class="src-str">&quot;invalid file&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a134"></a>            <span class="src-key">return </span><span class="src-var">$code</span><span class="src-sym">;</span></li>
+<li><a name="a135"></a>        <span class="src-sym">}</span></li>
+<li><a name="a136"></a>&nbsp;</li>
+<li><a name="a137"></a>        <span class="src-var">$code </span>= <span class="src-str">'&lt;script src=&quot;http://maps.google.com/maps?file=api&amp;amp;v=2&amp;amp;key='</span>.<span class="src-var">$key</span>.<span class="src-str">'&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span></li>
+<li><a name="a138"></a><span class="src-str">&lt;br /&gt;&lt;br /&gt;</span></li>
+<li><a name="a139"></a><span class="src-str">&lt;div id=&quot;map&quot; style=&quot;width: '</span>.<span class="src-var">$width</span>.<span class="src-str">'px; height: '</span>.<span class="src-var">$height</span>.<span class="src-str">'px; border: 2px solid #111111;&quot;&gt;&lt;/div&gt;</span></li>
+<li><a name="a140"></a>&nbsp;</li>
+<li><a name="a141"></a><span class="src-str">&lt;script type=&quot;text/javascript&quot;&gt;</span></li>
+<li><a name="a142"></a><span class="src-str">function loadIGC() {</span></li>
+<li><a name="a143"></a>&nbsp;</li>
+<li><a name="a144"></a><span class="src-str">    var map = new GMap2(document.getElementById(&quot;map&quot;));</span></li>
+<li><a name="a145"></a><span class="src-str">    map.addControl(new GSmallMapControl());</span></li>
+<li><a name="a146"></a><span class="src-str">    map.addControl(new GMapTypeControl());</span></li>
+<li><a name="a147"></a><span class="src-str">    '</span><span class="src-sym">;</span></li>
+<li><a name="a148"></a>&nbsp;</li>
+<li><a name="a149"></a>    <span class="src-var">$started </span>= <span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a150"></a>    <span class="src-key">foreach </span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">records </span><span class="src-key">as </span><span class="src-var">$each</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a151"></a>&nbsp;</li>
+<li><a name="a152"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-var">$each</span><span class="src-sym">-&gt;</span><span class="src-id">type </span>== <span class="src-str">&quot;B&quot;</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a153"></a>            </li>
+<li><a name="a154"></a>            <span class="src-key">if </span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$started</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a155"></a>                <span class="src-var">$code </span>.= <span class="src-str">&quot;map.setCenter(new GLatLng(&quot;</span>.<span class="src-var">$each</span><span class="src-sym">-&gt;</span><span class="src-id">latitude</span><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">]</span>.<span class="src-str">&quot;, &quot;</span>.<span class="src-var">$each</span><span class="src-sym">-&gt;</span><span class="src-id">longitude</span><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">]</span>.<span class="src-str">&quot;), 13, G_SATELLITE_MAP);\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a156"></a>                <span class="src-var">$code </span>.= <span class="src-str">&quot;var polyline = new GPolyline([\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a157"></a>                <span class="src-var">$started </span>= <span class="src-id">true</span><span class="src-sym">;</span></li>
+<li><a name="a158"></a>            <span class="src-sym">}</span></li>
+<li><a name="a159"></a>            </li>
+<li><a name="a160"></a>            <span class="src-var">$code </span>.= <span class="src-str">&quot;new GLatLng(&quot;</span>.<span class="src-var">$each</span><span class="src-sym">-&gt;</span><span class="src-id">latitude</span><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">]</span>.<span class="src-str">&quot;, &quot;</span>.<span class="src-var">$each</span><span class="src-sym">-&gt;</span><span class="src-id">longitude</span><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">]</span>.<span class="src-str">&quot;),\n&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a161"></a>        <span class="src-sym">}</span></li>
+<li><a name="a162"></a>    <span class="src-sym">}</span></li>
+<li><a name="a163"></a>    </li>
+<li><a name="a164"></a>    <span class="src-var">$code </span>.= <span class="src-str">'</span></li>
+<li><a name="a165"></a><span class="src-str">    ], &quot;#FF0000&quot;, 2);</span></li>
+<li><a name="a166"></a><span class="src-str">    map.addOverlay(polyline);</span></li>
+<li><a name="a167"></a>    </li>
+<li><a name="a168"></a><span class="src-str">    }</span></li>
+<li><a name="a169"></a>&nbsp;</li>
+<li><a name="a170"></a><span class="src-str">    window.onload = loadIGC;</span></li>
+<li><a name="a171"></a><span class="src-str">    &lt;/script&gt;'</span><span class="src-sym">;</span></li>
+<li><a name="a172"></a>    </li>
+<li><a name="a173"></a>            <span class="src-key">return </span><span class="src-var">$code</span><span class="src-sym">;</span></li>
+<li><a name="a174"></a>    </li>
+<li><a name="a175"></a>    <span class="src-sym">}</span></li>
+<li><a name="a176"></a>    </li>
+<li><a name="a177"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a178"></a><span class="src-doc">    * Returns the full manufacturer string from the code defined in the A record</span></li>
+<li><a name="a179"></a><span class="src-doc">    *</span></li>
+<li><a name="a180"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@param </span><span class="src-doc">    </span><span class="src-doc-type">string </span><span class="src-doc">   </span><span class="src-doc-var">$code </span><span class="src-doc">is the manufacturer's code from the A record</span></li>
+<li><a name="a181"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@return </span><span class="src-doc">   </span><span class="src-doc-type">string </span><span class="src-doc">    Full manufacturer string</span></li>
+<li><a name="a182"></a><span class="src-doc">    */ </span></li>
+<li><a name="a183"></a>    <span class="src-key">public </span><span class="src-key">static </span><span class="src-key">function </span><a href="../php-igc/PHP_IGC.html#methodGetManufacturerFromCode">GetManufacturerFromCode</a><span class="src-sym">(</span><span class="src-var">$code</span><span class="src-sym">)</span></li>
+<li><a name="a184"></a>    <span class="src-sym">{</span></li>
+<li><a name="a185"></a>        <span class="src-comm">// manufacturer array</span></li>
+<li><a name="a186"></a>        <span class="src-var">$man </span>= <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a187"></a>        </li>
+<li><a name="a188"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'B'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Borgelt&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a189"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'C'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Cambridge&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a190"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'E'</span><span class="src-sym">] </span>= <span class="src-str">&quot;EW&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a191"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'F'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Filser&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a192"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'I'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Ilec&quot;</span><span class="src-sym">;    </span></li>
+<li><a name="a193"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'M'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Metron&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a194"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'P'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Peschges&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a195"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'S'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Sky Force&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a196"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'T'</span><span class="src-sym">] </span>= <span class="src-str">&quot;PathTracker&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a197"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'V'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Varcom&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a198"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'W'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Westerboer&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a199"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'Z'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Zander&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a200"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'1'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Collins&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a201"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'2'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Honeywell&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a202"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'3'</span><span class="src-sym">] </span>= <span class="src-str">&quot;King&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a203"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'4'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Garmin&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a204"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'5'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Trimble&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a205"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'6'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Motorola&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a206"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'7'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Magellan&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a207"></a>        <span class="src-var">$man</span><span class="src-sym">[</span><span class="src-str">'8'</span><span class="src-sym">] </span>= <span class="src-str">&quot;Rockwell&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a208"></a>        </li>
+<li><a name="a209"></a>        <span class="src-key">if </span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$man</span><span class="src-sym">[</span>(string)<span class="src-var">$code</span><span class="src-sym">]</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a210"></a>            <span class="src-key">return </span><span class="src-id">false</span><span class="src-sym">;</span></li>
+<li><a name="a211"></a>        <span class="src-sym">}</span></li>
+<li><a name="a212"></a>        </li>
+<li><a name="a213"></a>        <span class="src-key">return </span><span class="src-var">$man</span><span class="src-sym">[</span>(string)<span class="src-var">$code</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a214"></a>    <span class="src-sym">}</span></li>
+<li><a name="a215"></a><span class="src-sym">}</span></li>
+<li><a name="a216"></a><span class="src-php">?&gt;</span></li>
+</ol></pre>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 13 Feb 2007 15:45:31 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</body>
+</html>

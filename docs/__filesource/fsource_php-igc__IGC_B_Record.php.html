@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for IGC_B_Record.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file IGC_B_Record.php</h1>
+<p>Documentation is available at <a href="../php-igc/_IGC_B_Record_php.html">IGC_B_Record.php</a></p>
+<div class="src-code">
+<pre><ol><li><a name="a1"></a><span class="src-php">&lt;?php</span></li>
+<li><a name="a2"></a><span class="src-doc">/**</span></li>
+<li><a name="a3"></a><span class="src-doc">* IGC_B_Record class extends IGC_Record. The mandatory data is: UTC, latitude, longitude, fix validity</span></li>
+<li><a name="a4"></a><span class="src-doc">* and pressure altitude. It is recommended to include GPS altitude and fix accuracy if they are available.</span></li>
+<li><a name="a5"></a><span class="src-doc">* The B Record is a multiple instance record.</span></li>
+<li><a name="a6"></a><span class="src-doc">*</span></li>
+<li><a name="a7"></a><span class="src-doc">* </span><span class="src-doc-coretag">@see</span><span class="src-doc"> IGC_Record</span></li>
+<li><a name="a8"></a><span class="src-doc">*</span></li>
+<li><a name="a9"></a><span class="src-doc">* </span><span class="src-doc-coretag">@version</span><span class="src-doc"> 0.1</span></li>
+<li><a name="a10"></a><span class="src-doc">* </span><span class="src-doc-coretag">@author</span><span class="src-doc"> Mike Milano &lt;coder1@gmail.com&gt;</span></li>
+<li><a name="a11"></a><span class="src-doc">* </span><span class="src-doc-tag">@project</span><span class="src-doc"> php-igc</span></li>
+<li><a name="a12"></a><span class="src-doc">*/</span></li>
+<li><a name="a13"></a><span class="src-key">class </span><a href="../php-igc/IGC_B_Record.html">IGC_B_Record</a> <span class="src-key">extends </span><a href="../php-igc/IGC_Record.html">IGC_Record</a></li>
+<li><a name="a14"></a><span class="src-sym">{</span></li>
+<li><a name="a15"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a16"></a><span class="src-doc">    * Time array [0] hours, [1] minutes, [3] seconds</span></li>
+<li><a name="a17"></a><span class="src-doc">    *</span></li>
+<li><a name="a18"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a19"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">array </span></li>
+<li><a name="a20"></a><span class="src-doc">    */</span></li>
+<li><a name="a21"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$time_array">$time_array</a><span class="src-sym">;</span></li>
+<li><a name="a22"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a23"></a><span class="src-doc">    * Latitude array [0] degrees, [1] minutes, [2] decimal minutes, [3] direction</span></li>
+<li><a name="a24"></a><span class="src-doc">    *</span></li>
+<li><a name="a25"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a26"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">array </span></li>
+<li><a name="a27"></a><span class="src-doc">    */</span></li>
+<li><a name="a28"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$latitude">$latitude</a><span class="src-sym">;</span></li>
+<li><a name="a29"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a30"></a><span class="src-doc">    * Longitude array [0] degrees, [1] minutes, [2] decimal minutes, [3] direction</span></li>
+<li><a name="a31"></a><span class="src-doc">    *</span></li>
+<li><a name="a32"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a33"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">array </span></li>
+<li><a name="a34"></a><span class="src-doc">    */</span></li>
+<li><a name="a35"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$longitude">$longitude</a><span class="src-sym">;</span></li>
+<li><a name="a36"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a37"></a><span class="src-doc">    * Fixed valid. A: valid, V:nav warning</span></li>
+<li><a name="a38"></a><span class="src-doc">    *</span></li>
+<li><a name="a39"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a40"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">string </span></li>
+<li><a name="a41"></a><span class="src-doc">    */</span></li>
+<li><a name="a42"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$fixed_valid">$fixed_valid</a><span class="src-sym">;</span></li>
+<li><a name="a43"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a44"></a><span class="src-doc">    * Pressure Altitude</span></li>
+<li><a name="a45"></a><span class="src-doc">    *</span></li>
+<li><a name="a46"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a47"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">integer </span></li>
+<li><a name="a48"></a><span class="src-doc">    */</span></li>
+<li><a name="a49"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$pressure_altitude">$pressure_altitude</a><span class="src-sym">;</span></li>
+<li><a name="a50"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a51"></a><span class="src-doc">    * GPS Altitude</span></li>
+<li><a name="a52"></a><span class="src-doc">    *</span></li>
+<li><a name="a53"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a54"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">integer </span></li>
+<li><a name="a55"></a><span class="src-doc">    */</span></li>
+<li><a name="a56"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$gps_altitude">$gps_altitude</a><span class="src-sym">;</span></li>
+<li><a name="a57"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a58"></a><span class="src-doc">    * Fix Accuracy</span></li>
+<li><a name="a59"></a><span class="src-doc">    *</span></li>
+<li><a name="a60"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@access</span><span class="src-doc"> public</span></li>
+<li><a name="a61"></a><span class="src-doc">    * </span><span class="src-doc-coretag">@var </span><span class="src-doc-type">integer </span></li>
+<li><a name="a62"></a><span class="src-doc">    */</span></li>
+<li><a name="a63"></a>    <span class="src-key">public </span><a href="../php-igc/IGC_B_Record.html#var$fix_accuracy">$fix_accuracy</a><span class="src-sym">;</span></li>
+<li><a name="a64"></a>    </li>
+<li><a name="a65"></a>    <span class="src-doc">/**</span></li>
+<li><a name="a66"></a><span class="src-doc">    * Class constructor creates the B record from the raw IGC string</span></li>
+<li><a name="a67"></a><span class="src-doc">    *</span></li>
+<li><a name="a68"></a><span class="src-doc">    * $param    string    $record</span></li>
+<li><a name="a69"></a><span class="src-doc">    */</span></li>
+<li><a name="a70"></a>    <span class="src-key">public </span><span class="src-key">function </span><a href="../php-igc/IGC_B_Record.html#method__construct">__construct</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">)</span></li>
+<li><a name="a71"></a>    <span class="src-sym">{</span></li>
+<li><a name="a72"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_Record.html#var$type">type</a> = <span class="src-str">'B'</span><span class="src-sym">;</span></li>
+<li><a name="a73"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_Record.html#var$raw">raw</a> = <span class="src-var">$string</span><span class="src-sym">;</span></li>
+<li><a name="a74"></a>        </li>
+<li><a name="a75"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$time_array">time_array</a><span class="src-sym">[</span><span class="src-str">'h'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">1</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a76"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$time_array">time_array</a><span class="src-sym">[</span><span class="src-str">'m'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">3</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a77"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$time_array">time_array</a><span class="src-sym">[</span><span class="src-str">'s'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">5</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a78"></a>        </li>
+<li><a name="a79"></a>        <span class="src-comm">// set degrees, minutes, and decimal minutes</span></li>
+<li><a name="a80"></a>        <span class="src-comm">// latitude</span></li>
+<li><a name="a81"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a> = <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a82"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'degrees'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">7</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a83"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'minutes'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">9</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a84"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'decimal_minutes'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">11</span><span class="src-sym">,</span><span class="src-num">3</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a85"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'direction'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">14</span><span class="src-sym">,</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a86"></a>        </li>
+<li><a name="a87"></a>        <span class="src-var">$pm </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'direction'</span><span class="src-sym">]</span>==<span class="src-str">&quot;S&quot;</span>?<span class="src-str">&quot;-&quot;</span>:<span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a88"></a>        <span class="src-var">$dd </span>= <span class="src-sym">((</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'minutes'</span><span class="src-sym">]</span>.<span class="src-str">&quot;.&quot;</span>.<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'decimal_minutes'</span><span class="src-sym">]</span><span class="src-sym">)</span>/<span class="src-num">60</span><span class="src-sym">)</span>+<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'degrees'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a89"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$latitude">latitude</a><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">] </span>= <span class="src-var">$pm</span>.<span class="src-var">$dd</span><span class="src-sym">;</span></li>
+<li><a name="a90"></a>        </li>
+<li><a name="a91"></a>        <span class="src-comm">// longitude</span></li>
+<li><a name="a92"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a> = <span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a93"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'degrees'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">15</span><span class="src-sym">,</span><span class="src-num">3</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a94"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'minutes'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">18</span><span class="src-sym">,</span><span class="src-num">2</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a95"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'decimal_minutes'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">20</span><span class="src-sym">,</span><span class="src-num">3</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a96"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'direction'</span><span class="src-sym">] </span>= <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">23</span><span class="src-sym">,</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a97"></a>        </li>
+<li><a name="a98"></a>        <span class="src-var">$pm </span>= <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'direction'</span><span class="src-sym">]</span>==<span class="src-str">&quot;W&quot;</span>?<span class="src-str">&quot;-&quot;</span>:<span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></li>
+<li><a name="a99"></a>        <span class="src-var">$dd </span>= <span class="src-sym">((</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'minutes'</span><span class="src-sym">]</span>.<span class="src-str">&quot;.&quot;</span>.<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'decimal_minutes'</span><span class="src-sym">]</span><span class="src-sym">)</span>/<span class="src-num">60</span><span class="src-sym">)</span>+<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'degrees'</span><span class="src-sym">]</span><span class="src-sym">;</span></li>
+<li><a name="a100"></a>        <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$longitude">longitude</a><span class="src-sym">[</span><span class="src-str">'decimal_degrees'</span><span class="src-sym">] </span>= <span class="src-var">$pm</span>.<span class="src-var">$dd</span><span class="src-sym">;</span></li>
+<li><a name="a101"></a>        </li>
+<li><a name="a102"></a>        <span class="src-comm">// extended data</span></li>
+<li><a name="a103"></a>        <span class="src-key">if </span><span class="src-sym">(</span><a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">)</span>&gt;<span class="src-num">25</span><span class="src-sym">) </span><span class="src-sym">{</span></li>
+<li><a name="a104"></a>        </li>
+<li><a name="a105"></a>            <span class="src-comm">// set fixed valid</span></li>
+<li><a name="a106"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$fixed_valid">fixed_valid</a> = <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">25</span><span class="src-sym">,</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a107"></a>            </li>
+<li><a name="a108"></a>            <span class="src-comm">// set pressure altitude</span></li>
+<li><a name="a109"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$pressure_altitude">pressure_altitude</a> = <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">26</span><span class="src-sym">,</span><span class="src-num">5</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a110"></a>            </li>
+<li><a name="a111"></a>            <span class="src-comm">// set gps altitude</span></li>
+<li><a name="a112"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$gps_altitude">gps_altitude</a> = <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">31</span><span class="src-sym">,</span><span class="src-num">5</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a113"></a>            </li>
+<li><a name="a114"></a>            <span class="src-comm">// set fix accuracy</span></li>
+<li><a name="a115"></a>            <span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../php-igc/IGC_B_Record.html#var$fix_accuracy">fix_accuracy</a> = <a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,</span><span class="src-num">36</span><span class="src-sym">,</span><span class="src-num">3</span><span class="src-sym">)</span><span class="src-sym">;</span></li>
+<li><a name="a116"></a>        <span class="src-sym">}</span></li>
+<li><a name="a117"></a>    <span class="src-sym">}</span></li>
+<li><a name="a118"></a><span class="src-sym">}</span></li>
+<li><a name="a119"></a><span class="src-php">?&gt;</span></li>
+</ol></pre>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 13 Feb 2007 15:45:29 -0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</body>
+</html>
