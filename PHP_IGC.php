@@ -101,11 +101,11 @@ class PHP_IGC
 		// set lowest and highest altitude
 		if (is_array($this->records)) {
 			foreach ($this->records as $each) {
-				if ($each['type'] == 'B') {
-					if ($each['pressure_altitude']>$this->max_altitude) {
-						$this->max_altitude = $each['pressure_altitude'];
-					} elseif ($each['pressure_altitude'] < $this->min_altitude) {
-						$this->min_altitude = $each['pressure_altitude'];
+				if ($each->type == 'B') {
+					if ($each->pressure_altitude > $this->max_altitude) {
+						$this->max_altitude = $each->pressure_altitude;
+					} elseif ($each->pressure_altitude < $this->min_altitude) {
+						$this->min_altitude = $each->pressure_altitude;
 					}
 				}
 			}
