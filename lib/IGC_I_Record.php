@@ -38,12 +38,14 @@ class IGC_I_Record extends IGC_Record
     $this->raw = $record;
 
     $this->number_of_extensions = intval(substr($record, 1, 2));
+    $this->extensions = array();
     for ($i = 0; $i < $this->number_of_extensions; $i++) {
       $extension_code = substr($record, 1 + 2 + $i * 7 + 4, 3);
       $this->extensions[$extension_code] =
         array("start_byte" => intval(substr($record, 1 + 2 + $i * 7, 2)),
               "finish_byte" => intval(substr($record, 1 + 2 + $i * 7 + 2, 2)));
     }
+    IGC_B_Record::SetExtensionOffsets($this->extensions);
   }
 }
 ?>

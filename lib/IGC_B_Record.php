@@ -69,6 +69,15 @@ class IGC_B_Record extends IGC_Record
   public $fix_accuracy;
 
   /**
+   * Extensions in the B records and their positions in the record
+   * string
+   *
+   * @access private
+   * @var array
+   */
+  private static $extension_offsets;
+
+  /**
    * Class constructor creates the B record from the raw IGC string
    *
    * $param     string  $record
@@ -105,21 +114,32 @@ class IGC_B_Record extends IGC_Record
     $dd = (($this->longitude['minutes'].".".$this->longitude['decimal_minutes'])/60)+$this->longitude['degrees'];
     $this->longitude['decimal_degrees'] = $pm.$dd;
 
-    // extended data
-    if (strlen($record)>25) {
+    // set fixed valid
+    $this->fixed_valid = substr($record, 25, 1);
 
-      // set fixed valid
-      $this->fixed_valid = substr($record,25,1);
+    // set pressure altitude
+    $this->pressure_altitude = substr($record, 26, 5);
 
-      // set pressure altitude
-      $this->pressure_altitude = substr($record,26,5);
+    // set gps altitude
+    $this->gps_altitude = substr($record, 31, 5);
 
-      // set gps altitude
-      $this->gps_altitude = substr($record,31,5);
-
-      // set fix accuracy
-      $this->fix_accuracy = substr($record,36,3);
+    foreach (self::$extension_offsets as
+             $extension_name => $extension_offset) {
+      $this->extension_data[$extension_name] =
+        substr($record, $extension_offset["start_byte"],
+               $extension_offset["finish_byte"] -
+               $extension_offset["start_byte"]);
     }
+  }
+
+  /**
+   * Set expected extension fields in the B records
+   *
+   * @param     array  $extensions
+   */
+  public static function SetExtensionOffsets($extension_offsets)
+  {
+    self::$extension_offsets = $extension_offsets;
   }
 }
 ?>
