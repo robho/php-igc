@@ -36,7 +36,7 @@ class IGC_J_Record extends IGC_Record
   /**
    * Class constructor creates the J record from the raw IGC string
    *
-   * $param     string  $record
+   * @param     string  $record
    */
   public function __construct($record)
   {

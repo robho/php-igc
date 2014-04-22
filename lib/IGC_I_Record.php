@@ -30,7 +30,7 @@ class IGC_I_Record extends IGC_Record
   /**
    * Class constructor creates the I record from the raw IGC string
    *
-   * $param     string  $record
+   * @param     string  $record
    */
   public function __construct($record)
   {
