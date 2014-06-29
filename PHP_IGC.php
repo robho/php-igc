@@ -14,7 +14,7 @@ class PHP_IGC
   /**
    * The date and time of the flight
    * @access public
-   * @var string
+   * @var DateTime
    */
   public $datetime;
 
@@ -61,6 +61,13 @@ class PHP_IGC
   public $distance;
 
   /**
+   * The total duration of the flight (in seconds)
+   * @access public
+   * @var integer
+   */
+  public $duration;
+
+  /**
    * Class constructor creates the PHP_IGC object from a file path.
    *
    * @param        string  $file_path usually this will be the request vars
@@ -99,8 +106,25 @@ class PHP_IGC
 
     // set lowest and highest altitude
     if (is_array($this->records)) {
+      $this->datetime = new DateTime("1970-01-01");
+      $start_found = false;
+
       foreach ($this->records as $each) {
+        if ($each->type == 'H' && $each->mnemonic == 'DTE') {
+          $this->datetime->setDate('20'.substr($each->value, 4, 2),
+                                   substr($each->value, 2, 2),
+                                   substr($each->value, 0, 2));
+        }
         if ($each->type == 'B') {
+            $record_time = clone $this->datetime;
+            $record_time->setTime($each->time_array['h'],
+                                  $each->time_array['m'],
+                                  $each->time_array['s']);
+          if (!$start_found) {
+            $start_found = true;
+            $this->datetime = $record_time;
+          }
+          $this->duration = $record_time->getTimestamp() - $this->datetime->getTimestamp();
           if ($each->pressure_altitude > $this->max_altitude) {
             $this->max_altitude = $each->pressure_altitude;
           } elseif ($each->pressure_altitude < $this->min_altitude) {
