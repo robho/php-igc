@@ -110,16 +110,21 @@ class PHP_IGC
       $start_found = false;
 
       foreach ($this->records as $each) {
-        if ($each->type == 'H' && $each->mnemonic == 'DTE') {
-          $this->datetime->setDate('20'.substr($each->value, 4, 2),
-                                   substr($each->value, 2, 2),
-                                   substr($each->value, 0, 2));
+        if ($each->type == 'H') {
+          if ($each->tlc == 'DTE') {
+            $this->datetime->setDate('20'.substr($each->value, 4, 2),
+                                     substr($each->value, 2, 2),
+                                     substr($each->value, 0, 2));
+          }
+          elseif ($each->tlc == 'PLT') {
+            $this->pilot = ucwords(strtolower($each->value));
+          }
         }
-        if ($each->type == 'B') {
-            $record_time = clone $this->datetime;
-            $record_time->setTime($each->time_array['h'],
-                                  $each->time_array['m'],
-                                  $each->time_array['s']);
+        elseif ($each->type == 'B') {
+          $record_time = clone $this->datetime;
+          $record_time->setTime($each->time_array['h'],
+                                $each->time_array['m'],
+                                $each->time_array['s']);
           if (!$start_found) {
             $start_found = true;
             $this->datetime = $record_time;
@@ -127,7 +132,8 @@ class PHP_IGC
           $this->duration = $record_time->getTimestamp() - $this->datetime->getTimestamp();
           if ($each->pressure_altitude > $this->max_altitude) {
             $this->max_altitude = $each->pressure_altitude;
-          } elseif ($each->pressure_altitude < $this->min_altitude) {
+          }
+          elseif ($each->pressure_altitude < $this->min_altitude) {
             $this->min_altitude = $each->pressure_altitude;
           }
         }

@@ -19,12 +19,12 @@ class IGC_H_Record extends IGC_Record
   public $source;
 
   /**
-   * Mnemonic
+   * Three letter code
    *
    * @access public
    * @var string
    */
-  public $mnemonic;
+  public $tlc;
 
   /**
    * Key
@@ -53,9 +53,9 @@ class IGC_H_Record extends IGC_Record
     $this->raw = $record;
 
     $this->source = substr($record, 1, 1);
-    $this->mnemonic = substr($record, 2, 3);
+    $this->tlc = substr($record, 2, 3);
 
-    if ($this->mnemonic == "DTE" || $this->mnemonic == "FXA") {
+    if ($this->tlc == "DTE" || $this->tlc == "FXA") {
       $this->key = substr($record, 0, 5);
       $this->value = substr($record, 5);
     }
