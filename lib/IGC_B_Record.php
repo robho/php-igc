@@ -115,13 +115,13 @@ class IGC_B_Record extends IGC_Record
     $this->longitude['decimal_degrees'] = $pm.$dd;
 
     // set fixed valid
-    $this->fixed_valid = substr($record, 25, 1);
+    $this->fixed_valid = substr($record, 24, 1);
 
     // set pressure altitude
-    $this->pressure_altitude = substr($record, 26, 5);
+    $this->pressure_altitude = intval(substr($record, 25, 5));
 
     // set gps altitude
-    $this->gps_altitude = substr($record, 31, 5);
+    $this->gps_altitude = intval(substr($record, 30, 5));
 
     foreach (self::$extension_offsets as
              $extension_name => $extension_offset) {
