@@ -75,7 +75,7 @@ class IGC_B_Record extends IGC_Record
    * @access private
    * @var array
    */
-  private static $extension_offsets;
+  private static $extension_offsets = array();
 
   /**
    * Class constructor creates the B record from the raw IGC string
