@@ -43,7 +43,7 @@ class IGC_E_Record extends IGC_Record
   public function __construct($record)
   {
     $this->type = 'E';
-    $this->raw = $string;
+    $this->raw = $record;
 
     $this->time_array['h'] = substr($record,1,2);
     $this->time_array['m'] = substr($record,3,2);
